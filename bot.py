@@ -16,13 +16,15 @@ async def on_ready():
 @client.event
 async def on_message(message):
     if message.content.startswith('!test'):
+        if (message.channel.id === 523172858877181952)){
         counter = 0
         tmp = await client.send_message(message.channel, 'Calculating messages...')
         async for log in client.logs_from(message.channel, limit=100):
             if log.author == message.author:
                 counter += 1
 
-        await client.edit_message(tmp, 'You have {} messages.'.format(counter))
+        await client.edit_message(tmp, 'You have {} messages.'.format(counter))}
+        else { await client.send_message(message.channel, 'You are not allowed to use this command here.') }
     elif message.content.startswith('!sleep'):
         await asyncio.sleep(5)
         await client.send_message(message.channel, 'Done sleeping')
