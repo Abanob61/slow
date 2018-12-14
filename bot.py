@@ -34,6 +34,7 @@ async def on_message(message):
            profilename = msg[15:].strip()
            print (profilename)
            url = requests.get("http://35.211.89.225/exc.php?token=%s" % profilename)
-           await client.send_message(message.author, "Starting room")
+           await client.delete_message(message)
+           await client.send_message(message.author, "Retarting US room")
 
 client.run('NTIzMTcwMzQ4Nzg3Njk1NjE4.DvVrYg.lVYzS0VyPWLlBE57GeceMEM6IZo')
