@@ -39,7 +39,7 @@ async def on_message(message):
            print (profilename)
            url = requests.get("http://35.211.89.225/exc.php?token=%s" % profilename)
            await client.delete_message(message)
-           await client.send_message(message.author, "Retarting US room")
+           await client.send_message(message.channel, "Retarting US room")
         else : await client.send_message(message.channel, 'You are not allowed to use this command here.')
     elif message.content.startswith('+restartroomEU'):
         if message.channel.id == '523172858877181952':
@@ -48,7 +48,11 @@ async def on_message(message):
            print (profilename)
            url = requests.get("http://88.99.37.36/exc.php?token=%s" % profilename)
            await client.delete_message(message)
-           await client.send_message(message.author, "Retarting EU room")
+           await client.send_message(message.channel, "Retarting EU room")
         else : await client.send_message(message.channel, 'You are not allowed to use this command here.')
+    elif message.content.startswith('!clear823'):
+        tmp = await client.send_message(message.channel, 'Clearing messages...')
+        async for msg in client.logs_from(message.channel):
+            await client.delete_message(msg)
 
 client.run('NTIzMTcwMzQ4Nzg3Njk1NjE4.DvVrYg.lVYzS0VyPWLlBE57GeceMEM6IZo')
