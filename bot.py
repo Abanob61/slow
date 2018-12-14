@@ -27,7 +27,7 @@ async def on_message(message):
         await asyncio.sleep(5)
         await client.send_message(message.channel, 'Done sleeping')
     elif message.content.startswith('+help') or message.content.startswith('!verify-help') or message.content.startswith('!getverified'):
-        await client.send_message(message.channel, "First: You need to open [https://www.haxball.com/headlesstoken](<https://www.haxball.com/headlesstoken>) and solve the recaptcha to get the token code from there.")  
+        await client.send_message(message.channel, "First: You need to open https://www.haxball.com/headlesstoken and solve the recaptcha to get the token code from there.")  
         await client.send_message(message.channel, "Second: Type here: **+restartroomUS TOKEN_CODE** for restart the US room or **+restartroomEU TOKEN_CODE** for restart the EU room")       
     elif message.content.startswith('+restartroomUS'):
            msg = message.content.strip()
