@@ -16,7 +16,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
     if message.content.startswith('!test'):
-        if (message.channel.id === 523172858877181952)){
+        if (message.channel.id === 523172858877181952){
         counter = 0
         tmp = await client.send_message(message.channel, 'Calculating messages...')
         async for log in client.logs_from(message.channel, limit=100):
