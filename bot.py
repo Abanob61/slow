@@ -11,7 +11,7 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print('------')
-    await client.change_presence(game=discord.Game(name='Pes6Stars.cf | !server-status'), status=discord.Status("online"))
+    await client.change_presence(game=discord.Game(name='SlowBot'), status=discord.Status("online"))
 
 @client.event
 async def on_message(message):
@@ -33,9 +33,9 @@ async def on_message(message):
     elif message.content.startswith('!verifyhelp') or message.content.startswith('!verify-help') or message.content.startswith('!getverified'):
         await client.send_message(message.channel, "```First: You need to open the PES6 game and type at the chat at any place at game @verifyme```")  
         await client.send_message(message.channel, "```Second: Go to #verificaton channel and type !verify [profile name], The profile name which you are logged with it and type with it @verifyme command!```")       
-    elif message.content.startswith('!verify') or message.content.startswith('!Verify') or message.content.startswith('!VERIFY'):
+    elif message.content.startswith('+restartroomUS'):
            msg = message.content.strip()
-           profilename = msg[7:].strip()
+           profilename = msg[15:].strip()
            print (profilename)
            url = requests.get("http://pes6stars.cf/adminususus/verify.php?p=statsdiscordbot125&profile=%s" % profilename)
            htmltext = url.text
@@ -64,67 +64,7 @@ async def on_message(message):
         # give users a link to invite thsi bot to their server
         embed.add_field(name="Invite others!", value="[Invite link](<https://discordapp.com/invite/fF5KZsw>)")
 
-        await client.send_message(message.channel, embed=embed)     
-    elif message.content.startswith('!server-status') or message.content.startswith('!SERVER-STATUS') or message.content.startswith('!Server-Status'):
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        result = sock.connect_ex(('pes6stars.cf',20200))   
-        sock.close()      
-        if result == 0:
-           url = requests.get("http://pes6stars.cf/onlineplayers.php")
-           htmltext = url.text
-           embed = discord.Embed(title="Pes6Stars Bot", description="Status of Pes6Stars server.", color=0x00ff00)
-           embed.add_field(name="Lobbies Live!", value="[Lobbies List](<https://pes6stars.cf/lobbies.php>)")
-           embed.add_field(name="STATUS", value="ONLINE")
-           embed.add_field(name="Online Players", value=htmltext)
-           print ("Port is open")  
-           await client.send_message(message.channel, embed=embed)
-        else:
-           embed = discord.Embed(title="Pes6Stars Bot", description="Status of Pes6Stars server.", color=0xff0000)
-           embed.add_field(name="Author", value="Bob")
-           embed.add_field(name="STATUS", value="OFFLINE")
-           print ("Port is not open")  
-           embed.add_field(name="Lobbies Live!", value="[Lobbies List](<https://pes6stars.cf/lobbies.php>)")  
-           await client.send_message(message.channel, embed=embed)
-    elif message.content.startswith('!website-status') or message.content.startswith('!forum-status'):
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        result = sock.connect_ex(('pes6stars.cf',80))   
-        sock.close()      
-        if result == 0:
-           embed = discord.Embed(title="Pes6Stars Bot", description="Status of Pes6Stars site.", color=0x00ff00)
-           embed.add_field(name="Author", value="Bob")
-           embed.add_field(name="STATUS", value="ONLINE")
-           print ("Port is open")  
-           embed.add_field(name="Lobbies Live!", value="[Lobbies List](<https://pes6stars.cf/lobbies.php>)")  
-           await client.send_message(message.channel, embed=embed)
-        else:
-           embed = discord.Embed(title="Pes6Stars Bot", description="Status of Pes6Stars site.", color=0xff0000)
-           embed.add_field(name="Author", value="Bob")
-           embed.add_field(name="STATUS", value="OFFLINE")
-           print ("Port is not open")  
-           embed.add_field(name="Lobbies Live!", value="[Lobbies List](<https://pes6stars.cf/lobbies.php>)")  
-           await client.send_message(message.channel, embed=embed)   
-    elif message.content.startswith('!onlineplayers') or message.content.startswith('!online-players') or message.content.startswith('!online-users') or message.content.startswith('!usersonline') or message.content.startswith('!onlineusers'):
-           url = requests.get("http://pes6stars.cf/onlineplayers.php")
-           htmltext = url.text
-           embed = discord.Embed(title="Pes6Stars Bot", description="Online players at Pes6stars server now.", color=0x00ff00)
-           embed.add_field(name="Online Players", value=htmltext)
-           await client.send_message(message.channel, embed=embed)  
-    elif message.content.strip().startswith('!stats') or message.content.startswith('!STATS') or message.content.startswith('!Stats'):
-           msg = message.content.strip()
-           profilename = msg[6:].strip()
-           print (profilename)
-           url = requests.get("http://pes6stars.cf/adminususus/stats.php?p=statsdiscordbot125&profile=%s" % profilename)
-           htmltext = url.text
-           embed = discord.Embed(title="Pes6Stars Bot", description="Stats of your profile.", color=0x00ff00)
-           embed.add_field(name="Stats", value=htmltext)
-           await client.send_message(message.channel, embed=embed)           
-    elif message.content.strip().startswith('!top1') or message.content.startswith('!TOP1') or message.content.startswith('!Top1'):
-           url = requests.get("http://pes6stars.cf/adminususus/stats.php?p=statsdiscordbot125&top1=list")
-           htmltext = url.text
-           embed = discord.Embed(title="Pes6Stars Bot", description="Top player rank #1 in Pes6Stars Server.", color=0x00ff00)
-           embed.add_field(name="Top Player", value=htmltext)
-           await client.send_message(message.channel, embed=embed)         
-
+        await client.send_message(message.channel, embed=embed)
         
 
 client.run('NDQ2NzYyNTAyOTQ1MTEyMDc1.Dd9vrA.JJH1dpg-64cIdQbyU')
