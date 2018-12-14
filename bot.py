@@ -33,11 +33,22 @@ async def on_message(message):
         await client.send_message(message.channel, "First: You need to open https://www.haxball.com/headlesstoken and solve the recaptcha to get the token code from there.")  
         await client.send_message(message.channel, "Second: Type here: **+restartroomUS TOKEN_CODE** for restart the US room or **+restartroomEU TOKEN_CODE** for restart the EU room")       
     elif message.content.startswith('+restartroomUS'):
+        if message.channel.id == '523172858877181952':
            msg = message.content.strip()
            profilename = msg[15:].strip()
            print (profilename)
            url = requests.get("http://35.211.89.225/exc.php?token=%s" % profilename)
            await client.delete_message(message)
            await client.send_message(message.author, "Retarting US room")
+        else : await client.send_message(message.channel, 'You are not allowed to use this command here.')
+    elif message.content.startswith('+restartroomEU'):
+        if message.channel.id == '523172858877181952':
+           msg = message.content.strip()
+           profilename = msg[15:].strip()
+           print (profilename)
+           url = requests.get("http://88.99.37.36/exc.php?token=%s" % profilename)
+           await client.delete_message(message)
+           await client.send_message(message.author, "Retarting EU room")
+        else : await client.send_message(message.channel, 'You are not allowed to use this command here.')
 
 client.run('NTIzMTcwMzQ4Nzg3Njk1NjE4.DvVrYg.lVYzS0VyPWLlBE57GeceMEM6IZo')
