@@ -23,16 +23,12 @@ async def on_message(message):
                 counter += 1
 
         await client.edit_message(tmp, 'You have {} messages.'.format(counter))
-            elif message.content.startswith('!clear823'):
-        tmp = await client.send_message(message.channel, 'Clearing messages...')
-        async for msg in client.logs_from(message.channel):
-            await client.delete_message(msg)
     elif message.content.startswith('!sleep'):
         await asyncio.sleep(5)
         await client.send_message(message.channel, 'Done sleeping')
-    elif message.content.startswith('!verifyhelp') or message.content.startswith('!verify-help') or message.content.startswith('!getverified'):
-        await client.send_message(message.channel, "```First: You need to open the PES6 game and type at the chat at any place at game @verifyme```")  
-        await client.send_message(message.channel, "```Second: Go to #verificaton channel and type !verify [profile name], The profile name which you are logged with it and type with it @verifyme command!```")       
+    elif message.content.startswith('+help') or message.content.startswith('!verify-help') or message.content.startswith('!getverified'):
+        await client.send_message(message.channel, "```First: You need to open https://www.haxball.com/headlesstoken and get the token code from there.```")  
+        await client.send_message(message.channel, "```Second: Type here: **+restartroomUS TOKEN_CODE** for restart the US room or **+restartroomEU TOKEN_CODE** for restart the EU room```")       
     elif message.content.startswith('+restartroomUS'):
            msg = message.content.strip()
            profilename = msg[15:].strip()
