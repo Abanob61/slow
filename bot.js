@@ -7,7 +7,7 @@ const client = new Discord.Client();
 client.on('ready', () => {
 
     console.log('I am ready!');
-    client.user.setActivity('SlowBall', { type: 'WATCHING' });
+    client.user.setActivity('SlowBall', { type: 'PLAYING' });
 });
 
  
